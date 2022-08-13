@@ -14,23 +14,23 @@
         }
 
 
-        /* Larger y-margin on other pages causes overflow */
+        /* Smaller y-margin on first page causes other pages to overflow */
         /**/
-        @page {
-            margin-top: 2cm;
-        }
         @page :first {
             margin-top: 0;
+        }
+        @page {
+            margin-top: 2cm;
         }
         /**/
 
-        /* Smaller y-margin on other pages causes them to break too soon */
+        /* Larger y-margin on first page causes other pages to break too soon */
         /*
-        @page {
-            margin-top: 0;
-        }
         @page :first {
             margin-top: 2cm;
+        }
+        @page {
+            margin-top: 0;
         }
         /**/
 
