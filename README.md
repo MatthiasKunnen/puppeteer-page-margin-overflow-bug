@@ -1,5 +1,10 @@
-# Reproduction for overflow when first page in PDF has different margin-top/margin-bottom from other pages
-When the first page of the pdf has a different margin (using `@page :first {margin-top: x}`) the page break points of the rest of the pages is incorrect. This causes either overflow or the content breaking too soon.
+# Reproduction for overflow when first page in PDF has different y-margin from other pages
+When the first page of the pdf has a different `margin-top`/`margin-bottom` (using `@page :first {margin-top: x}`) the page break points of the rest of the pages is incorrect. This causes either overflow or the content breaking too soon.
+
+## Test it yourself
+Run `yarn run start` to generate `out.pdf` once.  
+Run `yarn run watch` to generate `out.pdf` every time the source `index.html` changes.  
+
 
 ## My understanding of the issue
 The inner height (content height of the page, height without margin) of the first page seems to determine the inner height of the other pages.
