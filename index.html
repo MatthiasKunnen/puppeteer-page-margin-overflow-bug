@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test</title>
+    <meta charset="utf-8">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            line-height: 1.5;
+        }
+
+        @page {
+            margin: 1.2cm;
+        }
+
+        @page :first {
+            margin-top: 0; /* Also overflows for 0.1cm */
+        }
+
+        body {
+            /* padding-bottom: 1.2cm; /* Adding bottom padding adds a blank page */
+            font-family: "Liberation Sans", sans-serif;
+            font-size: 8pt;
+        }
+
+        section {
+            page-break-inside: avoid;
+            background-color: #a1a1a1;
+        }
+    </style>
+</head>
+<body>
+    <p style="height: 25cm">First page has different margin from the rest of the document</p>
+    <section data-repeat="D:60"></section>
+    <section data-repeat="E:7"></section>
+    <script>
+        document.querySelectorAll('section').forEach(section => {
+            if (section.dataset.repeat == null) {
+                return
+            }
+
+            let [symbol, repeat] = section.dataset.repeat.split(':')
+            repeat = Number(repeat)
+            let content = `${symbol}1-${symbol}${repeat}\n`
+
+            for (let i = 2; i <= repeat; i++) {
+                content += `${symbol}${i}\n`
+            }
+
+            section.innerText = content
+
+            // Setting the height circumvents the issue:
+            // section.style.height = section.clientHeight + 'px'
+        })
+    </script>
+</body>
+</html>

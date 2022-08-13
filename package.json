@@ -1,0 +1,12 @@
+{
+    "scripts": {
+        "start": "node index.js",
+        "watch": "nodemon -e '*' -w ./index.html -w ./index.js -x yarn run start"
+    },
+    "dependencies": {
+        "puppeteer": "^16.1.0"
+    },
+    "devDependencies": {
+        "nodemon": "^2.0.19"
+    }
+}
