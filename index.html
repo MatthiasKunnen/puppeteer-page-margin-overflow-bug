@@ -13,30 +13,41 @@
             line-height: 1.5;
         }
 
-        @page {
-            margin: 1.2cm;
-        }
 
-        @page :first {
-            margin-top: 0; /* Also overflows for 0.1cm */
+        /* Larger y-margin on other pages causes overflow */
+        /**/
+        @page {
+            margin-top: 2cm;
         }
+        @page :first {
+            margin-top: 0;
+        }
+        /**/
+
+        /* Smaller y-margin on other pages causes them to break too soon */
+        /*
+        @page {
+            margin-top: 0;
+        }
+        @page :first {
+            margin-top: 2cm;
+        }
+        /**/
 
         body {
-            /* padding-bottom: 1.2cm; /* Adding bottom padding adds a blank page */
+            padding-right: 1.2cm;
+            padding-left: 1.2cm;
             font-family: "Liberation Sans", sans-serif;
             font-size: 8pt;
         }
 
         section {
-            page-break-inside: avoid;
             background-color: #a1a1a1;
         }
     </style>
 </head>
 <body>
-    <p style="height: 25cm">First page has different margin from the rest of the document</p>
-    <section data-repeat="D:60"></section>
-    <section data-repeat="E:7"></section>
+    <section data-repeat="A:200"></section>
     <script>
         document.querySelectorAll('section').forEach(section => {
             if (section.dataset.repeat == null) {
@@ -52,9 +63,6 @@
             }
 
             section.innerText = content
-
-            // Setting the height circumvents the issue:
-            // section.style.height = section.clientHeight + 'px'
         })
     </script>
 </body>
