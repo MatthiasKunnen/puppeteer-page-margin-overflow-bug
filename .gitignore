@@ -1,0 +1,9 @@
+/*
+!.gitignore
+!examples/
+!index.html
+!index.js
+!LICENSE
+!package.json
+!README.md
+!yarn.lock
