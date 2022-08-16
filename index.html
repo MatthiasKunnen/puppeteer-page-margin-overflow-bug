@@ -16,11 +16,11 @@
 
         /* Smaller y-margin on first page causes other pages to overflow */
         /**/
+        @page {
+            margin: 2cm;
+        }
         @page :first {
             margin-top: 0;
-        }
-        @page {
-            margin-top: 2cm;
         }
         /**/
 
@@ -35,8 +35,6 @@
         /**/
 
         body {
-            padding-right: 1.2cm;
-            padding-left: 1.2cm;
             font-family: "Liberation Sans", sans-serif;
             font-size: 8pt;
         }
